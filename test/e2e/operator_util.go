@@ -24,14 +24,14 @@ import (
 )
 
 const (
-	Redis3_1_12 = "uhub.service.cafe24-dhkim05.cn/operator/redis:3.2.12-alpine"
-	Redis4_0_14 = "uhub.service.cafe24-dhkim05.cn/operator/redis:4.0.14-alpine"
-	Redis5_0_4  = "uhub.service.cafe24-dhkim05.cn/operator/redis:5.0.4-alpine"
-	Redis5_0_6  = "uhub.service.cafe24-dhkim05.cn/operator/redis:5.0.6-alpine"
+	Redis3_1_12 = "docker.io/redis:3.2.12-alpine"
+	Redis4_0_14 = "docker.io/redis:4.0.14-alpine"
+	Redis5_0_4  = "docker.io/redis:5.0.4-alpine"
+	Redis5_0_6  = "docker.io/redis:5.0.6-alpine"
 
-	exporterImage = "uhub.service.cafe24-dhkim05.cn/operator/redis_exporter:latest"
+	exporterImage = "docker.io/oliver006/redis_exporter:latest"
 
-	BackupImage = "uhub.service.cafe24-dhkim05.cn/operator/redis-tools:5.0.4"
+	BackupImage = "docker.io/excieve/redis-tools:5.0.4"
 
 	passwordKey = "password"
 	S3ID        = "AWS_ACCESS_KEY_ID"
