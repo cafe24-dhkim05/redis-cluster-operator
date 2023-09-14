@@ -2,6 +2,7 @@ SHELL=/bin/bash -o pipefail
 
 PROJECT_NAME=redis-cluster-operator
 REPO=cafe24-dhkim05/$(PROJECT_NAME)
+DOCKER_REGISTRY=docker.io/cafe24dhkim05
 
 # replace with your public registry
 ALTREPO=$(DOCKER_REGISTRY)/$(PROJECT_NAME)
@@ -17,12 +18,12 @@ all: check build
 build: test build-go build-image
 
 build-go:
-	GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+	GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build \
 	-ldflags "-X github.com/$(REPO)/version.Version=$(VERSION) -X github.com/$(REPO)/version.GitSHA=$(GIT_SHA)" \
-	-o $(BIN_DIR)/$(PROJECT_NAME)-linux-amd64 cmd/manager/main.go
-	GO111MODULE=on CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build \
+	-o $(BIN_DIR)/$(PROJECT_NAME)-linux-arm64 cmd/manager/main.go
+	GO111MODULE=on CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build \
 	-ldflags "-X github.com/$(REPO)/version.Version=$(VERSION) -X github.com/$(REPO)/version.GitSHA=$(GIT_SHA)" \
-	-o $(BIN_DIR)/$(PROJECT_NAME)-darwin-amd64 cmd/manager/main.go
+	-o $(BIN_DIR)/$(PROJECT_NAME)-darwin-arm64 cmd/manager/main.go
 
 build-image:
 	docker build --build-arg VERSION=$(VERSION) --build-arg GIT_SHA=$(GIT_SHA) -t $(ALTREPO):$(VERSION) .

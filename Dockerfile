@@ -18,7 +18,7 @@ RUN go mod download
 
 COPY pkg ./ cmd ./ version ./
 
-RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ${GOBIN}/${PROJECT_NAME} \
+RUN GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ${GOBIN}/${PROJECT_NAME} \
     -ldflags "-X ${REPO_PATH}/version.Version=${VERSION} -X ${REPO_PATH}/version.GitSHA=${GIT_SHA}" \
     $BUILD_PATH
 
