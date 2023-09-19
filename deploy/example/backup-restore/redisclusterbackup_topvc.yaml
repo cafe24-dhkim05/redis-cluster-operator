@@ -19,7 +19,7 @@ metadata:
   annotations:
     redis.kun/scope: cluster-scoped
 spec:
-  image: uhub.service.cafe24-dhkim05.cn/operator/redis-tools:5.0.4
+  image: docker.io/excieve/redis-tools:5.0.4
   # on same namespace
   redisClusterName: test
   local:
